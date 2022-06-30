@@ -7,7 +7,7 @@ const Sub = (props) => {
       <h2>Sub Comp</h2>
       <div>{props.name}</div>
       <End name={props.name}></End>
-      {/* <End2 name={props.name}></End2> */}
+      <End2 name={props.name} />
     </div>
   );
 };
