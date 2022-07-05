@@ -17,5 +17,4 @@
 # NodeJS와 MongoDB 연동
 
 - MongoDB는 local에 서버를 설치하여 사용 할 수도 있고 mongodb.com에 회원가입을 하여 무료 cloud 서비스 이용
-- NodeJS와 MongoDB를 연동하기 위하여 Dependency 설치 : mongoose를 설치하여 NoSQL을 DBMS Schema처럼 사용
-  `npm install mongoose`
+- NodeJS와 MongoDB를 연동하기 위하여 Dependency 설치 : mongoose를 설치하여 NoSQL을 DBMS Schema처럼 사용 => `npm install mongoose`
