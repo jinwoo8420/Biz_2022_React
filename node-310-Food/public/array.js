@@ -1,8 +1,22 @@
-const korea = { k: "대한민국" };
-console.log(korea);
+/*
+객체 펼치기
+객체의 비 구조화
+객체의 분해
 
-const [k] = korea.k;
-console.log(k);
+객체를 분해하여 KK 변수를 생성하고
+KK 변수에 '우리나라' 문자열 담기
+*/
+const { KK } = { KK: "우리나라" };
+console.log(KK);
 
-const nation = "우리나라";
-console.log(nation);
+/*
+배열 펼치기
+배열의 비 구조화
+배열의 분해
+
+[1,2,3]이 담긴 배열을 각각분해하여
+변수 a,b,c를 생성하고 각각 요소를 변수에 담기
+*/
+const arr = [1, 2, 3];
+const [a, b, c] = arr;
+console.log(a, b, c);
