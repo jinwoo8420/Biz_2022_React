@@ -1,4 +1,15 @@
-const DietList = () => {
+const DietList = ({ foods }) => {
+  const foodsBody = foods.map((food) => {
+    return (
+      <tr key={food.d_id}>
+        <td>{food.d_date}</td>
+        <td>{food.d_food}</td>
+        <td>{food.d_qty}</td>
+        <td>{food.d_cal}</td>
+      </tr>
+    );
+  });
+
   return (
     <table className="w3-table w3-table-all">
       <thead>
@@ -9,6 +20,7 @@ const DietList = () => {
           <th>칼로리</th>
         </tr>
       </thead>
+      <tbody>{foodsBody}</tbody>
     </table>
   );
 };

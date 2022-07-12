@@ -50,7 +50,19 @@ const DietInput = () => {
       },
       body: JSON.stringify(food),
     };
-    const res = await fetch("http://localhost:3000/food/insert", postOption);
+    /*
+    react와 node 사이에서 데이터를 주고받는데
+    서로 다른 PORT를 통해서 데이터를 주고 받게 되어
+    CORS(Cross Origin Resource Share, 교차사이트 스크립트 오류)가 발생 한다
+    서버와 서버간의 통신(데이터 교환)이 이뤄질 때
+    보안, 해킹 방지 등을 이유로 점점 많은 곳에서 스크립트 교환이 이루어지지 않도록 하고 있다
+    CORS 때문에 실제 필요한 API 이용에 제한이 많다
+    React, NodeJS가 같은 서버에서 작동 될 때는 Package.json에 proxy 설정을 통하여 CORS 문제를 일부 해결 가능하다
+
+    proxy 설정을 했을 경우는 fetch URL 부분에 http://localhost:3000 주소를 생략하고 router 주소만 사용하여
+    nodeJS와 데이터를 주고 받는다
+    */
+    const res = await fetch("/food/insert", postOption);
     if (res.ok) {
       const json = await res.json();
       console.log(json);
