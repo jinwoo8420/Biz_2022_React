@@ -62,12 +62,51 @@ const DietMain = () => {
     });
   }, []);
 
+  /*
+  배열.filter() 함수를 사용하여
+  전달받은 삭제 할 d_id와 일치하지 않는 데이터만 추출하기
+  */
+
+  const removeFoodItem = (d_id) => {
+    fetch(`/food/remove/${d_id}`, { method: "DELETE" })
+      .then((res) => res.text())
+      .then((result) => {
+        const filterBody = foods.filter((food) => food.d_id !== d_id);
+        setFoods(filterBody);
+      });
+  };
+
+  /*
+  child component에 전달해야 할 데이터와 함수가 많아지는 경우
+  개별적으로 전달하는 것보다 하나의 객체로 묶어서 전달하기
+  */
+
+  const params = {
+    foods,
+    removeFoodItem,
+    fetchFood,
+    setFoods,
+  };
+
+  /*
+  DietList와 DietInput에게 params에 담긴 데이터와 함수를 한꺼번에 전달하기
+  */
+
   return (
     <>
-      <DietList foods={foods} />
-      <DietInput />
+      <DietList params={params} />
+      <DietInput params={params} />
     </>
   );
+
+  /*
+  return (
+    <>
+      <DietList foods={foods} removeFoodItem={removeFoodItem} />
+      <DietInput fetchFood={fetchFood} setFoods={setFoods} />
+    </>
+  );
+  */
 };
 
 export default DietMain; // 다른 컴포넌트에서 import 하기 위해 함수를 export 처리

@@ -2,7 +2,12 @@ import { useState } from "react"; // state 변수를 만들기 위하여 useStat
 import uuid from "react-uuid";
 import moment from "moment";
 
-const DietInput = () => {
+const DietInput = ({ params }) => {
+  /*
+  params로 전달받은 데이터와 함수중에서 필요한 부분만 분해하여 변수에 받기
+  */
+  const { fetchFood, setFoods } = params;
+
   // JSON type의 food state 변수 생성
   const [food, setFood] = useState({
     d_id: uuid(),
@@ -33,13 +38,13 @@ const DietInput = () => {
   [name] : 값
   */
 
-  const onDateChange = (e) => {
-    setFood({ ...food, d_date: e.target.value });
-  };
+  // const onDateChange = (e) => {
+  //   setFood({ ...food, d_date: e.target.value });
+  // };
 
-  const onFoodChange = (e) => {
-    setFood({ ...food, d_food: e.target.value });
-  };
+  // const onFoodChange = (e) => {
+  //   setFood({ ...food, d_food: e.target.value });
+  // };
 
   const onClick = async (e) => {
     console.log(food);
@@ -66,7 +71,18 @@ const DietInput = () => {
     if (res.ok) {
       const json = await res.json();
       console.log(json);
+      fetchFood().then((result) => {
+        setFoods(result);
+      });
     }
+
+    setFood({
+      d_id: uuid(),
+      d_date: moment().format("YYYY-MM-DD"),
+      d_food: "",
+      d_qty: "",
+      d_cal: "",
+    });
   };
 
   return (
@@ -76,7 +92,7 @@ const DietInput = () => {
           type="date"
           name="d_date"
           className="w3-input"
-          defaultValue={food.d_date}
+          value={food.d_date}
           onChange={onChange}
         />
       </div>
@@ -87,6 +103,7 @@ const DietInput = () => {
           name="d_food"
           className="w3-input"
           placeholder="메뉴 입력"
+          value={food.d_food}
           onChange={onChange}
         />
       </div>
@@ -97,6 +114,7 @@ const DietInput = () => {
           name="d_qty"
           className="w3-input"
           placeholder="섭취량 입력"
+          value={food.d_qty}
           onChange={onChange}
         />
       </div>
@@ -107,6 +125,7 @@ const DietInput = () => {
           name="d_cal"
           className="w3-input"
           placeholder="단위 칼로리 입력"
+          value={food.d_cal}
           onChange={onChange}
         />
       </div>
