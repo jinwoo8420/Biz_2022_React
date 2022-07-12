@@ -41,12 +41,21 @@ const DietInput = () => {
     setFood({ ...food, d_food: e.target.value });
   };
 
-  //   const onClick = async (e) =>{
-  //     const res = await fetch("http://localhost:3000/food/insert",postOption).then((res) => res.text()).
-  //         if(res.ok){
-  //             const json = await res.json
-  //         }
-  //   }
+  const onClick = async (e) => {
+    console.log(food);
+    const postOption = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(food),
+    };
+    const res = await fetch("http://localhost:3000/food/insert", postOption);
+    if (res.ok) {
+      const json = await res.json();
+      console.log(json);
+    }
+  };
 
   return (
     <div className="w3-row-padding">
@@ -89,7 +98,11 @@ const DietInput = () => {
           onChange={onChange}
         />
       </div>
-      <button className="w3-button">저장</button>
+      <div className="w3-col s2">
+        <button className="w3-button w3-blue" onClick={onClick}>
+          저장
+        </button>
+      </div>
     </div>
   );
 };
