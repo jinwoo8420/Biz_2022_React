@@ -5,9 +5,10 @@ useEffect : React의 생명주기 함수로 Component가 rendering 할 때 자�
 node 서버로부터 데이터를 fetch(SELECT ALL)하여 state 변수에 담는 코드가 작성 될 곳
 */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DietInput from "./DietInput";
 import DietList from "./DietList";
+import DietContext from "../context/DietContext";
 
 /*
 DB에서 데이터들을 fetch하여 List를 보여줄 예정
@@ -93,9 +94,17 @@ const DietMain = () => {
   */
 
   return (
+    /*
+    DietContext.jsx 파일에 Context를 하나 생성해두고
+    Context의 Provider에게 params에 담긴 변수와 함수들을 저장해놓기(Store)
+
+    각각 개별 Component에 전달했던 params 제거
+    */
     <>
-      <DietList params={params} />
-      <DietInput params={params} />
+      <DietContext.Provider value={params}>
+        <DietList />
+        <DietInput params={params} />
+      </DietContext.Provider>
     </>
   );
 
