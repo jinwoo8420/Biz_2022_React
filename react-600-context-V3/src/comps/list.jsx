@@ -1,6 +1,5 @@
 import Item from "./item";
-import AppContext from "../context/Context";
-import { useContext } from "react";
+import { useAppContext } from "../context/ContextProvider";
 import View from "./view";
 
 // addrList 배열의 값을 표 형식으로 구현하기
@@ -9,7 +8,7 @@ const List = () => {
   부모 Container로부터 props로 전달받던 addList state 배열을
   AppContext.Provider의 Store에서 제공받기
   */
-  const { addrList } = useContext(AppContext);
+  const { addrList } = useAppContext();
 
   const addrBody = addrList.map((addr) => {
     return <Item addr={addr} />;

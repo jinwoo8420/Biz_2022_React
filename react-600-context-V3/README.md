@@ -12,3 +12,15 @@
 - 하지만 Context.Provider를 무분별하게 사용한다면 Project의 유지 보수성이 떨어지는 문제가 발생 할 수 있다
 - 또한 React 버전이 올라갈수록 여러가지 문제가 해결 되고 있기 때문에 잘 선택해서 사용하면 좋은 도구가 된다
 - context-V0에서는 일반적인 Drilling이 적용되는 코드를 봤고 context-V2에서는 매우 간단하게 Context.Provider를 적용해본다
+
+# Context.Provider의 향상된 사용
+
+- context-V2에서는 Context.Provider의 간단한 사용법을 확인했다
+- 실제 사용해야 할 state 변수와 여러가지 함수들을 만드는 곳과 보관하는 곳이 별도의 장소가 되어 프로젝트가 커지면 관리가 불편해질 수 있다
+- 관리 할 요소들(state, 여러가지 함수)과 store를 한 곳에서 관리하는 코드 작성
+
+# 합성 - Composition
+
+- 일반적인 상속과 조금 차이가 있음
+- 서로 다른 객체 여러개를 묶어서 새로운 기능이나 객체 구성하기
+- 상속 : is-a / 합성 : has-a

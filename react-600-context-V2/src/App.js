@@ -10,7 +10,7 @@ function App() {
   address state 변수를 변경시키는 setAddress 함수 선언
   */
   const [address, setAddress] = useState({
-    a_name: "김철수",
+    a_name: "abc",
     a_tel: "010-1111-1111",
     a_address: "서울특별시",
   });
@@ -27,7 +27,7 @@ function App() {
 
   const props = {
     address,
-    setAddrList,
+    setAddress,
     addrList,
     setAddrList,
     isEdit,
