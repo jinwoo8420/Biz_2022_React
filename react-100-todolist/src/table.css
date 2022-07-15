@@ -1,0 +1,25 @@
+.td_table {
+  padding: 8px 8px;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 25%;
+  /* text-decoration: line-through; */
+}
+
+/* .todo_content:hover {
+  text-decoration: line-through;
+} */
+
+.todo_content {
+  cursor: pointer;
+}
+
+.delete_btn {
+  float: left;
+  cursor: pointer;
+}
